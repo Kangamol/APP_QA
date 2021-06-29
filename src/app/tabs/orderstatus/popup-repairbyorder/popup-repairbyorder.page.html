@@ -1,0 +1,163 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="fontPromptBold fontSize20">รายการซ่อม</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="swapContent === 1">
+    <div align="center">
+        <ion-img src="{{product.NewPict}}" style="width: 250px;"></ion-img>
+        <h3 class=" fontPromptRegular">{{product.ProductCode}}</h3>
+    </div>
+
+
+    <ion-item color="light">
+        <ion-label class="ion-text-center">
+            <ion-text class="fontPromptBold fontSize20">
+                จำนวนงานของ Order : {{product.TotalQty}}
+            </ion-text>
+        </ion-label>
+    </ion-item>
+
+
+    <ion-item color="warning">
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize14">
+                วันที่ส่งซ่อม
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize14">
+                เลขที่บิลซ่อม
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed15 ion-text-center">
+            <ion-text class="fontPromptBold fontSize14">
+                แผนก
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize14">
+                อาการที่ซ่อม
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize14">
+                จำนวนที่ส่งซ่อม
+            </ion-text>
+        </ion-label>
+
+    </ion-item>
+
+    <ion-item *ngFor="let i of ReportRepairItem">
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize14">
+                {{ i.repairDate | date:"dd/MM/yy":"+0000" }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize14">
+                {{ i.repairDocNumber }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed15 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize14">
+                {{ i.repairType }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize14">
+                {{ i.reasonType }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize14">
+                {{ i.Qty }}
+            </ion-text>
+        </ion-label>
+
+    </ion-item>
+
+
+
+
+
+
+
+    <div align="center">
+        <br><br><br>
+        <ion-button color="danger" (click)="closeModal()">&nbsp;&nbsp;&nbsp;&nbsp;ปิด&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>
+    </div>
+
+</ion-content>
+
+<ion-content *ngIf="swapContent === 0">
+
+    <ion-item color="warning">
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize16">
+                แผนก
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed40 ion-text-center">
+            <ion-text class="fontPromptBold fontSize16">
+                อาการเสีย
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptBold fontSize16">
+                จำนวน
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed15 ion-text-center">
+            <ion-text class="fontPromptBold fontSize16">
+                เปอร์เซ็น
+            </ion-text>
+        </ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let typeRepair of orderRepairByType">
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{ typeRepair.repairType }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed40 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{ typeRepair.reasonType }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{ typeRepair.Qty }}
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed15 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{ (typeRepair.Qty/ qtyOrder) * 100 | number :'1.1-2'}}%
+            </ion-text>
+        </ion-label>
+    </ion-item>
+    <ion-footer>
+        <div align="center">
+            <br><br><br>
+            <ion-button color="danger" (click)="closeModal()">&nbsp;&nbsp;&nbsp;&nbsp;ปิด&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>
+        </div>
+    </ion-footer>
+</ion-content>

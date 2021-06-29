@@ -1,0 +1,290 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" (click)="backToOrderStatus()">
+            <ion-button>
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <ion-text color="primary" class="fontSize20 fontPromptBold">สรุปงานซ่อมของ Order : {{ orderNumber }}</ion-text>
+        </ion-title>
+    </ion-toolbar>
+
+    <ion-grid>
+        <ion-row *ngFor="let item of DetailRepairSum">
+            <ion-col size="1.5" style="border: solid 1px; border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>ยอดรวม<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text><br>{{ item.QTY | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(1, item.Filling)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>ซ่อมแต่ง</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontEmerald"><br>{{ item.Filling | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontEmerald">{{(item.Filling / item.QTY) *100| number : '1.1-2'}} %</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(2, item.Setting)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontMedium">ซ่อมฝัง</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontMedium"><br>{{ item.Setting | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontMedium">{{(item.Setting / item.QTY) *100| number : '1.1-2'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(3, item.Polishing)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontYellow">ซ่อมขัด<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontYellow"><br>{{ item.Polishing | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontYellow">{{(item.Polishing / item.QTY) *100| number : '1.1-2'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(4, item.Plating)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="primary">ซ่อมชุบ<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="primary"><br>{{ item.Plating | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text color="primary">{{(item.Plating / item.QTY) *100| number : '1.1-2'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.52" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(5, item.Stamp)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="success">ซ่อมตราตอก</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="success"><br>{{ item.Stamp | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text color="success">{{(item.Stamp / item.QTY) *100| number : '1.1-2'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(6, item.Enamel)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="danger">ซ่อมอินาเมล<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="danger"><br>{{ item.Enamel | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text color="danger">{{(item.Enamel / item.QTY) *100| number : '1.0-0'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.48" class="myBorder2" style="border-color: black;" (click)="alertClickHeader(7, item.Parts)">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontOrange">ซ่อมอะไหล่</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col class="center">
+                        <ion-text class="colorFontOrange"><br>{{ item.Parts | number}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize12 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontOrange">{{(item.Parts / item.QTY) *100| number : '1.0-0'}}%</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="3" *ngFor="let i of OrderItemRepair" [ngClass]="{'myImg': i.SumRepair == 0}" (click)="openModalReportRepair(i)">
+                <div>
+                    <p class="myFont4">&nbsp;&nbsp;{{i.ItemNo}}</p>
+                    <ion-img src="{{ i.NewPict }}"></ion-img>
+                    <div class="pictFont1">
+                        {{ i.ProductCode }}
+                    </div>
+
+                    <div [ngClass]="{'backgroundGray': i.SumRepair == 0}">
+                        <ion-row class="marginButtom">
+                            <ion-col>
+                                <ion-text class="fontPromptRegular fontSize16 ">จำนวนORDER : {{ i.TotalQty | number }}</ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 textLeft colorFontEmerald">
+                                    ซ่อมแต่ง&nbsp; : {{i.itemFilling | number }}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 textRigth fontPromptRegular colorFontEmerald">
+                                    ({{ (i.itemFilling / i.TotalQty) *100| number : '1.0-0'}}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2' class="textLeft">
+                                <ion-text class="fontPromptRegular fontSize14 colorFontMedium">
+                                    ซ่อมฝัง&nbsp;&nbsp; : {{ i.itemSetting| number }}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 textRigth fontPromptRegular colorFontMedium">
+                                    ({{ (i.itemSetting / i.TotalQty) *100| number : '1.0-0'}}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontYellow textLeft">
+                                    ซ่อมขัด&nbsp;&nbsp; : {{ i.itemPolishing | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontYellow">
+                                    ({{ (i.itemPolishing / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontBlue textLeft">
+                                    ซ่อมชุบ&nbsp;&nbsp; : {{ i.itemPlating | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontBlue">
+                                    ({{ (i.itemPlating / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontGreen textLeft">
+                                    ซ่อมตราตอก : {{ i.itemStamp | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontGreen">
+                                    ({{ (i.itemStamp / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontRed textLeft">
+                                    ซ่อมอินาเมล&nbsp; : {{ i.itemEnamel | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontRed">
+                                    ({{ (i.itemEnamel / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontOrange textLeft">
+                                    ซ่อมอะไหล่&nbsp;&nbsp;&nbsp; : {{ i.itemParts | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontOrange">
+                                    ({{ (i.itemParts / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-row class="marginTop marginButtom backgroundGray">
+                            <ion-col size='8'>
+                                <ion-text class="fontPromptBold fontSize14 textLeft">
+                                    รวมซ่อม : {{ i.SumRepair | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='4' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptBold ">
+                                    ({{ (i.SumRepair / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+
+                    </div>
+
+                </div>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

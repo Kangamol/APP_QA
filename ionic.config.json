@@ -1,0 +1,8 @@
+{
+  "name": "qaSales",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

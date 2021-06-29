@@ -1,0 +1,258 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="backToOrderStatus()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <ion-text color="primary" class="fontSize20 fontPromptBold">{{ orderNumber }}</ion-text>
+        </ion-title>
+        <ion-button slot="end" color="warning" size="medium" (click)="gotoReportRepair()">
+            <ion-text class="fontPromptRegular">สรุปงานซ่อม</ion-text>
+        </ion-button>
+    </ion-toolbar>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="2.2" style="border: solid 1px; border-color: black;" height="50">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>กำหนดส่ง<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text><br>({{thaiDate}})&nbsp;{{ DueDate | date:'dd/MM/yyyy':"+0000"}}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="1.3" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>จำนวนทั้ง Order</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>{{ totalQty | number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.3" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontMedium">งานค้าง Order</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text class="colorFontMedium">{{ Balance | number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="warning">งานค้างซ่อม<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="warning"><br>{{ repairQty | number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="primary">งานรอตรวจ<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="primary"><br>{{ qaQty - repairQty - finishQty| number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="success">ตรวจเสร็จแล้ว</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="success">{{finishQty| number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.4" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="danger">ซ่อมสะสม<br></ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text color="danger"><br>{{ totalRepairSum | number }}</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+
+            <ion-col size="1.3" class="myBorder2" style="border-color: black;">
+                <ion-row class="fontPromptRegular fontSize14 ion-text-center">
+                    <ion-col>
+                        <ion-text>Factory</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="fontPromptBold fontSize14 ion-text-center">
+                    <ion-col class="center">
+
+                        <ion-img src="{{avatar}}" class="heigth50"></ion-img>
+
+                        <!-- <ion-button *ngIf="dateLate > 3" color="success">{{ dateLate | number }} วัน</ion-button>
+            <ion-button *ngIf="dateLate >= 0 && dateLate <= 3" color="warning">{{ dateLate | number }} วัน</ion-button>
+            <ion-button *ngIf="dateLate < 0" color="danger">{{ dateLate | number }} วัน</ion-button> -->
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <!-- <ion-col size="2" class="myBorder2" style="border-color: black;">
+        
+      </ion-col> -->
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <!-- <ion-col size="3" *ngFor="let i of orderItems" [ngClass]="{'BorderRepair': i.SumRepair > 0 }" (click)="openModalReportRepair(i)"> -->
+            <ion-col size="3" *ngFor="let i of orderItems" (click)="openModalReportRepair(i)">
+                <div>
+                    <p class="myFont4">&nbsp;&nbsp;{{i.ItemNo}}</p>
+                    <ion-img [ngClass]="{'myImg': i.TotalQty == i.TotalFinish}" src="{{ i.NewPict }}"></ion-img>
+                    <div class="pictFont1">
+                        {{ i.ProductCode }}
+                    </div>
+
+                    <div>
+                        <ion-row class="marginButtom">
+                            <ion-col>
+                                <ion-text class="fontPromptRegular fontSize16 ">จำนวนORDER : {{ i.TotalQty | number }}</ion-text>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontMedium">
+                                    ค้างOrder : {{ i.TotalQty - i.TotalFinish - i.TotalRepair - (i.TotalQA - i.TotalFinish - i.TotalRepair)| number }}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 textRigth fontPromptRegular colorFontMedium">
+                                    ({{((i.TotalQty - i.TotalFinish - i.TotalRepair - (i.TotalQA - i.TotalFinish - i.TotalRepair))/ i.TotalQty) *100| number : '1.0-0'}}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <!-- ค้างซ่อม -->
+                        <ion-row class="marginTop marginButtom" *ngIf=" i.TotalQty !== i.TotalFinish">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontYellow textLeft">
+                                    ค้างซ่อม&nbsp;&nbsp; : {{i.TotalRepair | number }}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 textRigth fontPromptRegular colorFontYellow">
+                                    ({{ (i.TotalRepair / i.TotalQty) *100| number : '1.0-0'}}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <!-- งานรอตรวจ -->
+                        <ion-row class="marginTop marginButtom" *ngIf=" i.TotalQty !== i.TotalFinish">
+                            <ion-col size='8.2' class="textLeft">
+                                <ion-text class="fontPromptRegular fontSize14 colorFontBlue">
+                                    รอตรวจ&nbsp;&nbsp; : {{ i.TotalQA - i.TotalFinish - i.TotalRepair| number }}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 textRigth fontPromptRegular colorFontBlue">
+                                    ({{ ((i.TotalQA - i.TotalFinish - i.TotalRepair) / i.TotalQty) *100| number : '1.0-0'}}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <!-- ตรวจเสร็จแล้ว -->
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontGreen textLeft">ตรวจเสร็จ : {{ i.TotalFinish | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontGreen">
+                                    ({{ (i.TotalFinish / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+
+                        <!-- ซ่อมสะสม -->
+                        <ion-row class="marginTop marginButtom">
+                            <ion-col size='8.2'>
+                                <ion-text class="fontPromptRegular fontSize14 colorFontRed textLeft">ซ่อมสะสม : {{ i.SumRepair | number}}
+                                </ion-text>
+                            </ion-col>
+                            <ion-col size='3.8' class="textRigth">
+                                <ion-text class="fontSize14 fontPromptRegular colorFontRed">
+                                    ({{ (i.SumRepair / i.TotalQty) *100| number : '1.0-0' }}%)
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+
+
+
+
+
+                    <!-- <div >  
+            <div class="fontPromptRegular fontSize14 ">จำนวนORDER : {{ i.TotalQty | number }}</div>
+            <div class="fontPromptRegular fontSize14 colorFontRed" >ค้างOrder  &nbsp; : {{ i.TotalQty - i.TotalFinish - i.TotalRepair - (i.TotalQA - i.TotalFinish - i.TotalRepair)| number }} 
+              <ion-text class="fontSize12 textRigth">
+                ({{((i.TotalQty - i.TotalFinish - i.TotalRepair - (i.TotalQA - i.TotalFinish - i.TotalRepair))/ i.TotalQty) *100| number : '1.1'}}%)
+              </ion-text>
+            </div>
+
+
+            <div class="fontPromptRegular fontSize14 colorFontYellow textLeft" *ngIf=" i.TotalQty !== i.TotalFinish">งานค้างซ่อม. &nbsp; : {{i.TotalRepair | number }} 
+              <ion-text class="fontSize12 textRigth">
+                ({{ (i.TotalRepair / i.TotalQty) *100| number : '1.1'}}%)
+              </ion-text>
+            </div>
+
+
+            <div class="fontPromptRegular fontSize14 colorFontRed" *ngIf=" i.TotalQty !== i.TotalFinish">งานรอตรวจ.  &nbsp; : {{ i.TotalQA - i.TotalFinish - i.TotalRepair| number }}
+               <ion-text class="fontSize12 textRigth">
+                ({{ ((i.TotalQA - i.TotalFinish - i.TotalRepair) / i.TotalQty) *100| number : '1.1'}}%)
+                </ion-text>
+              </div>
+
+            <div class="fontPromptRegular fontSize14 colorFontBlue textLeft">ตรวจเสร็จแล้ว : {{ i.TotalFinish | number}} 
+              <ion-text class="fontSize12 textRigth">
+                ({{ (i.TotalFinish / i.TotalQty) *100| number : '1.1-1' }}%)
+              </ion-text>
+            </div>
+            <div class="fontPromptRegular fontSize14 colorFontYellow textLeft">ซ่อมสะสม: 50 <ion-text class="fontSize12 textRigth">(20%)</ion-text></div>
+            
+          </div> -->
+
+                </div>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

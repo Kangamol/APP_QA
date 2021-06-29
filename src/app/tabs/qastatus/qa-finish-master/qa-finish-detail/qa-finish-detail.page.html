@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="fontPromptBold fontSize26">ดูประวัติการตรวจงานเสร็จ</ion-title>
+  </ion-toolbar>
+
+
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row >
+  
+        <ion-col size="4" style="border: solid 1px; border-color: black;">
+
+
+              <h6 class="fontPromptRegular ion-text-center">OrderNumber</h6>
+              <h5 class="fontPromptBold ion-text-center">{{OrderNumber}}</h5>
+
+              <h6 class="fontPromptRegular ion-text-center">เลขที่บิล</h6>
+              <h5 class="fontPromptBold ion-text-center">{{qaDoc}}</h5>
+    
+
+        </ion-col>
+
+
+        <ion-col size="2.5" class="myBorder2" style="border-color: black;">
+          <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+            <ion-col>
+              <ion-text>ผู้ส่งงานตรวจเสร็จ<br></ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="fontPromptBold fontSize18 ion-text-center">
+            <ion-col>
+              <ion-text ><br> {{fullName}}({{nickName}})</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+  
+        <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+          <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+            <ion-col>
+              <ion-text>Team<br><br></ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="fontPromptBold fontSize18 ion-text-center">
+            <ion-col>
+              <ion-img src="{{avatar}}" class="heigth70"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col size="2.5" class="myBorder2" style="border-color: black;">
+          <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+            <ion-col>
+              <ion-text >วันที่ตรวจงานเสร็จ</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="fontPromptBold fontSize17 ion-text-center">
+            <ion-col>
+              <ion-text ><br>({{thaiDate}}) {{finishdate | date:'dd/MM/yyyy':"+0000"}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+  
+        <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+          <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+            <ion-col>
+              <ion-text>Factory</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="fontPromptBold fontSize18 ion-text-center">
+            <ion-col class="center">
+              
+                <ion-img src="{{showIcon}}" class="heigth70"></ion-img>
+              
+  
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+  </ion-toolbar>
+
+
+
+    <ion-grid>
+
+      <ion-item color="primary">
+
+        <ion-label  fixed class="fixed10 align">    
+          <ion-text>
+            <h2 class="fontPromptRegular align">NO.</h2>
+          </ion-text>
+        </ion-label>
+    
+  
+    
+        <ion-label  fixed class="fixed30 align">    
+          <h2 class="fontPromptRegular">Picture</h2>
+        </ion-label>
+      
+        <ion-label class="align">
+          <h2 class="fontPromptRegular">ProductCode</h2>
+        </ion-label>
+      
+  
+        <ion-label class="align">
+          <h2 class="fontPromptRegular">ตรวจเสร็จแล้ว</h2>
+        </ion-label>
+
+      </ion-item>
+    
+    </ion-grid>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+  
+
+    <ion-item  *ngFor="let i of qaFinishDetail">
+
+  
+      <ion-label  fixed class="fixed10 align">    
+        <ion-text>
+          <h2 class="fontPromptRegular align">{{i.finish_Item}}</h2>
+        </ion-text>
+      </ion-label>
+  
+
+  
+      <ion-label  fixed class="fixed30 align">    
+        <img src="{{i.NewPict}}">
+      </ion-label>
+    
+      <ion-label class=" align">
+        <h2 class="fontPromptRegular">{{i.ProductCode}}</h2>
+      </ion-label>
+
+    
+
+      <ion-label class="align" color="primary">
+        <h2 class="fontPromptRegular">{{i.TotalQtyFinish}}</h2>
+      </ion-label>
+ 
+    </ion-item>
+
+ 
+
+  </ion-grid>
+
+</ion-content>

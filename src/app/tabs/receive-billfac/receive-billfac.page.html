@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar class="heigth70">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="fontPromptBold fontSize26">QA รับโอนงานจาก Factory</ion-title>
+    
+    <ion-buttons slot="end" >
+      <ion-button (click)="onClickRefresh()">
+        <ion-icon slot="icon-only" name="refresh" size="large"></ion-icon>
+      </ion-button>
+      <ion-button (click)="showSearch()">
+        <ion-icon slot="icon-only" name="search" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+<!-- Login -->
+<ion-toolbar>
+  <ion-grid>
+    <ion-row [ngClass]="{'backgroundPink': user[0].saleManager == '2', 'backgroundBlue': user[0].saleManager == '1,3'}">
+
+      <ion-col size="1">
+        <ion-avatar>
+          <img src="{{user[0].userPicture}}">
+        </ion-avatar>
+      </ion-col>
+
+      <ion-col size="5" class="padingTop">
+        <ion-text  class="fontPromptBold fontSize20  ion-text-left ">&nbsp;Login : {{user[0].fullName}}({{user[0].nickName}})</ion-text>
+      </ion-col>
+
+      <ion-col size="5" class="padingTop">
+        <ion-text  class="fontPromptBold fontSize20 ion-text-left ">&nbsp;Team : {{user[0].saleTeam}}</ion-text>
+      </ion-col>
+    </ion-row>
+   </ion-grid>
+
+  </ion-toolbar>
+  
+
+
+  <ion-toolbar *ngIf="search">
+    <ion-searchbar placeholder="Find OrderNumber" debounce="500"  (ionChange)="getBill($event)"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-grid>
+  <ion-item color="danger">
+    <ion-thumbnail slot="start">
+      
+    </ion-thumbnail>
+
+    <ion-label  fixed class="fixed45">    
+        <ion-text>
+          <h1 class="fontPromptRegular">Description</h1>
+        </ion-text>
+     
+    </ion-label>
+
+    <ion-label class="alignright">
+      <h1 class="fontPromptRegular"> จำนวนที่ฝ่ายผลิตโอนมา</h1>
+    </ion-label>
+  </ion-item>
+</ion-grid>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngFor="let i of qaBillReceive" (click)="gotoQaReceive(i)">
+    <ion-thumbnail slot="start">
+      <img src="{{i.showIcon}}">
+    </ion-thumbnail>
+
+    <ion-label fixed class="fixed45">
+      <h2 class="fontPromptBold">{{i.OrderNumber}}</h2>
+      <h3 class="fontPromptRegular colorFontGray">Bill : {{i.qaDocNumber}}<br>
+                                                  กำหนดส่ง : ({{i.thaiDateDue}}){{i.DueDate | date:'dd/MM/yyyy':"+0000" }}<br>
+                                                  วันที่/เวลาที่ส่ง : ({{i.thaiDateBill}}){{i.billDate | date:'dd/MM/yy':"+0000"}} ({{i.billDate | date: 'HH:mm' : '+0'}}น.)
+                                                  <!-- Factory: {{i.ProductionTeam}} -->
+      </h3>
+    </ion-label>
+
+    <ion-label class="alignright">
+      <h1 class="fontPromptBold"> ยอดโอน : {{ i.TotalQty | number }}</h1>
+      <!-- <h3 class="fontPromptRegular colorFontGray"> จำนวนทั้งหมดของOrder : {{ i.OrderQty | number }}</h3> -->
+      <!-- <h3 class="fontPromptRegular colorFontGray">ยอดที่ยังไม่เสร็จ : {{i.OrderQty - i.TotalQaFinish | number}}<br>
+                                                  จำนวนทั้งหมดของOrder : {{ i.OrderQty | number }}</h3> -->
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

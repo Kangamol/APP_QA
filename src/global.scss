@@ -1,0 +1,348 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: 'Prompt-Regular';
+    src: url('./assets/fonts/Prompt/Prompt-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Prompt-Bold';
+    src: url('./assets/fonts/Prompt/Prompt-Bold.ttf')
+}
+
+@font-face {
+    font-family: 'Prompt-Medium';
+    src: url('./assets/fonts/Prompt/Prompt-Medium.ttf')
+}
+
+@font-face {
+    font-family: 'Prompt-Light';
+    src: url('./assets/fonts/Prompt/Prompt-Light.ttf')
+}
+
+.bordor {
+    border-style: groove;
+}
+
+.bordorLeft {
+    border-left: solid 1px rgb(131, 131, 131);
+}
+
+.bordorRigth {
+    border-right: solid 1px rgb(131, 131, 131);
+}
+
+.bordorTop {
+    border-top: solid 1px rgb(131, 131, 131);
+}
+
+.bordorButtom {
+    border-bottom: solid 1px rgb(131, 131, 131);
+}
+
+.fontPromptRegular {
+    font-family: Prompt-Regular;
+}
+
+.fontPromptBold {
+    font-family: Prompt-Bold;
+}
+
+.fontPromptMedium {
+    font-family: Prompt-Medium;
+}
+
+.fontPromptLight {
+    font-family: Prompt-Light;
+}
+
+.fontSize10 {
+    font-size: 10px;
+}
+
+.fontSize12 {
+    font-size: 12px;
+}
+
+.fontSize13 {
+    font-size: 13px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize16 {
+    font-size: 16px;
+}
+
+.fontSize17 {
+    font-size: 17px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.fontSize20 {
+    font-size: 20px;
+}
+
+.fontSize24 {
+    font-size: 24px;
+}
+
+.fontSize26 {
+    font-size: 26px;
+}
+
+.fontSize30 {
+    font-size: 30px;
+}
+
+.fontSize36 {
+    font-size: 36px;
+}
+
+.fixed5 {
+    min-width: 5% !important;
+    max-width: 5% !important;
+}
+
+.fixed7 {
+    min-width: 7% !important;
+    max-width: 7% !important;
+}
+
+.fixed8 {
+    min-width: 8% !important;
+    max-width: 8% !important;
+}
+
+.fixed10 {
+    min-width: 10% !important;
+    max-width: 10% !important;
+}
+
+.fixed12 {
+    min-width: 12% !important;
+    max-width: 12% !important;
+}
+
+.fixed15 {
+    min-width: 15% !important;
+    max-width: 15% !important;
+}
+
+.fixed20 {
+    min-width: 20% !important;
+    max-width: 20% !important;
+}
+
+.fixed25 {
+    min-width: 25% !important;
+    max-width: 25% !important;
+}
+
+.fixed30 {
+    min-width: 30% !important;
+    max-width: 30% !important;
+}
+
+.fixed35 {
+    min-width: 35% !important;
+    max-width: 35% !important;
+}
+
+.fixed38 {
+    min-width: 38% !important;
+    max-width: 38% !important;
+}
+
+.fixed40 {
+    min-width: 40% !important;
+    max-width: 40% !important;
+}
+
+.fixed45 {
+    min-width: 45% !important;
+    max-width: 45% !important;
+}
+
+.fixed50 {
+    min-width: 50% !important;
+    max-width: 50% !important;
+}
+
+.fixed60 {
+    min-width: 60% !important;
+    max-width: 60% !important;
+}
+
+.fixed70 {
+    min-width: 70% !important;
+    max-width: 70% !important;
+}
+
+.fixed75 {
+    min-width: 75% !important;
+    max-width: 75% !important;
+}
+
+.fixed80 {
+    min-width: 80% !important;
+    max-width: 80% !important;
+}
+
+.fixed85 {
+    min-width: 85% !important;
+    max-width: 85% !important;
+}
+
+.align {
+    text-align: center;
+}
+
+.alignright {
+    text-align: right;
+}
+
+.colorFontGray {
+    color: #9c9b9b;
+}
+
+.colorFontMedium {
+    color: #686868;
+}
+
+.colorFontGreen {
+    color: #059e00;
+}
+
+.colorFontRed {
+    color: #ff0000;
+}
+
+.colorFontYellow {
+    color: #ebe836;
+}
+
+.colorFontBlue {
+    color: #1100ff;
+}
+
+.colorFontOrange {
+    color: #cc9808;
+}
+
+.colorFontPink {
+    color: #ff00dd;
+}
+
+.colorFontEmerald {
+    color: #067474;
+}
+
+.backgroundGreen {
+    background-color: rgb(22, 252, 56)
+}
+
+.backgroundRed {
+    background-color: rgb(240, 111, 111);
+}
+
+.backgroundOrange {
+    background-color: rgb(231, 156, 15);
+}
+
+.backgroundBlue {
+    background-color: rgb(193, 201, 247);
+}
+
+.backgroundPink {
+    background-color: rgb(241, 187, 243);
+}
+
+.backgroundYellow {
+    background-color: rgb(250, 246, 4);
+}
+
+.backgroundGray {
+    background-color: rgb(167, 167, 167);
+}
+
+.fontwhith {
+    color: white;
+}
+
+.heigth20 {
+    height: 20px;
+}
+
+.heigth30 {
+    height: 30px;
+}
+
+.heigth40 {
+    height: 40px;
+}
+
+.heigth50 {
+    height: 50px;
+}
+
+.heigth60 {
+    height: 60px;
+}
+
+.heigth70 {
+    height: 70px;
+}
+
+.heigth100 {
+    height: 100px;
+}
+
+.heigth150 {
+    height: 150px;
+}
+
+.heigth160 {
+    height: 160px;
+}
+
+.padingTop {
+    padding-top: 15px;
+}
+
+.padingTop1 {
+    padding-top: 5px;
+}

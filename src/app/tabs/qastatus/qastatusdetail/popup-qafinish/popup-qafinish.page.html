@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class=" fontPromptRegular" >
+      <h1 class="fontsize20">กรุณากรอกจำนวนที่ตรวจงานเสร็จแล้ว </h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+
+    <div>
+      <br><br>
+    </div>
+
+    <div align="center">
+      <ion-img src="{{userSelected.NewPict}}" style="width: 250px;"></ion-img>
+      <h3 class=" fontPromptRegular">{{userSelected.ProductCode}}</h3>
+    </div>
+
+    <!-- <div>
+      <ion-item>
+        <h5 class=" fontPromptRegular">จำนวนทั้งหมดของงาน = {{userSelected.Qty}}</h5>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item>
+        <h5 class=" fontPromptRegular">จำนวนงานที่ยังค้างอยู่ = {{userSelected.Qty - (userSelected.RepairQty - userSelected.RepairFinish) - userSelected.FinishQty}}</h5>
+      </ion-item>
+    </div> -->
+
+    <div align="center">
+      <ion-item color="primary">
+        <ion-label position="floating"><h1 class=" fontPromptBold">ป้อนจำนวนตรวจงานเสร็จ : </h1></ion-label>
+        <ion-input  type="number" class=" fontPromptRegular" [(ngModel)]="selectQaFinish" (click)="$event.target.select()"></ion-input>
+      </ion-item>
+    </div>
+
+    <div align="center">
+      <br><br><br>
+      <ion-button color="success" 
+      [disabled]="selectQaFinish > userSelected.Qty - (userSelected.RepairQty - userSelected.RepairFinish) - userSelected.FinishQty - userSelected.SelectToRepair
+      - userSelected.RepairSent" 
+      (click)="closeModal()">&nbsp;&nbsp;&nbsp;&nbsp;ตกลง&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>
+    </div>
+  </ion-content>
+

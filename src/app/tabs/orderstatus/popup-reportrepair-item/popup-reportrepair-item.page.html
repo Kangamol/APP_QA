@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="fontPromptBold fontSize20">รายการบิล</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <div align="center">
+        <ion-img src="{{product.NewPict}}" style="width: 250px;"></ion-img>
+        <h3 class=" fontPromptRegular">{{product.ProductCode}}</h3>
+    </div>
+
+
+    <ion-item color="light">
+
+
+        <ion-label class="ion-text-center">
+            <ion-text class="fontPromptBold fontSize20">
+                จำนวนงานของ Order : {{product.TotalQty}}
+            </ion-text>
+        </ion-label>
+
+        <!-- <ion-label class="fixed50 ion-text-center">
+        <ion-text class="fontPromptRegular fontSize18">
+         ยอดซ่อมทั้งหมด : {{sum}} 
+         <ion-text class="fontPromptBold fontSize20" color="warning">= {{(sum/product.TotalQty)*100 | number:'1.0-1'}}%</ion-text>
+        </ion-text>
+      </ion-label> -->
+
+
+
+    </ion-item>
+
+
+    <ion-item color="dark">
+        <ion-label class="fixed30 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                วันที่รับบิล
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed40 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                เลขที่บิล QA
+            </ion-text>
+        </ion-label>
+
+        <!-- <ion-label class="fixed40 ion-text-center">
+          <ion-text class="fontPromptRegular fontSize16">
+            อาการที่ซ่อม
+          </ion-text>
+        </ion-label> -->
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                จำนวนที่อยู่ในบิล
+            </ion-text>
+        </ion-label>
+    </ion-item>
+
+
+
+
+    <ion-item *ngFor="let i of viewBillOrder" (click)="gotoQastatusDetail(i)" [ngClass]="{'myImg': i.Qty == i.QaFinish}">
+        <ion-label class="fixed30 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{i.receiveDate | date:"dd/MM/yy":"+0000" }}<br>
+                <ion-text class="colorFontGray">{{i.receiveDate | date: 'HH:mm' : '+0' }} น.</ion-text>
+            </ion-text>
+        </ion-label>
+
+        <ion-label class="fixed40 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{i.qaDocNumber}}
+            </ion-text>
+        </ion-label>
+
+        <!-- <ion-label class="fixed40 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+              {{i.repairType}}-{{i.reasonType}}
+            </ion-text>
+          </ion-label> -->
+
+        <ion-label class="fixed20 ion-text-center">
+            <ion-text class="fontPromptRegular fontSize16">
+                {{i.Qty}}
+            </ion-text>
+        </ion-label>
+    </ion-item>
+
+
+
+    <div align="center">
+        <br><br><br>
+        <ion-button color="danger" (click)="closeModal()">&nbsp;&nbsp;&nbsp;&nbsp;ปิด&nbsp;&nbsp;&nbsp;&nbsp;</ion-button>
+    </div>
+
+</ion-content>

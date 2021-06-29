@@ -1,0 +1,111 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+  
+  .myBorder1 {
+    border: solid 1px #ddd;
+  }
+  
+  .myBorder1selected {
+    border: solid 3px rgb(23, 253, 15);
+  }
+
+  .BorderRepair {
+    border: solid 3px rgb(244, 248, 2);
+  }
+  
+  .myBorder2 {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+  }
+  
+  .myBorder1m {
+    border: solid 1px #ddd;
+    margin-top: 3px;
+  }
+  
+  .myBorder2m {
+    border-top: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+    margin-top: 3px;
+  }
+  
+  .myBorderRow1 {
+    border: solid 1px #ddd;
+    margin-top: 3px;
+  }
+  
+  .myFont1 {
+    font-size: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .myFont2 {
+    font-size: 10px;
+    text-align: center;
+  }
+  
+  .myFont3 {
+    font-size: 12px;
+    text-align: center;
+    color: blueviolet;
+  }
+
+  .myFont4 {
+    font-size: 10px;
+  }
+  
+  .ordercartFont {
+    font-size: 10px;
+    text-align: center;
+    color: blueviolet;
+  }
+  
+  .image-container {
+    min-height: 200px;
+    background-size: cover;
+  }
+  
+  .pictFont1 {
+    font-size: 14px;
+    text-align: center;
+    background-color: rgb(233, 232, 232);
+  }
+  
+  .pictFont2 {
+    font-size: 14px;
+    font-style: bold;
+    text-align: center;
+    color: red;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .fontToolbar {
+    font-size: 18px;
+    text-align: center;
+    color: #2600ff;
+}
+
+.textRigth {
+  text-align: right;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.marginTop {
+  margin-top: 0px;
+}
+
+.marginButtom {
+  margin-bottom: 0px;
+}
+
+.myImg {
+  filter: brightness(50%);
+}

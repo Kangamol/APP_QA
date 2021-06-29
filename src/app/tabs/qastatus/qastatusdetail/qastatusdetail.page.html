@@ -1,0 +1,352 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="fontPromptBold fontSize26">บันทึกผลการตรวจ QA</ion-title>
+  </ion-toolbar>
+  
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row >
+    
+          <ion-col size="4" style="border: solid 1px; border-color: black;">
+  
+  
+                <h6 class="fontPromptRegular ion-text-center">OrderNumber</h6>
+                <h5 class="fontPromptBold ion-text-center">{{OrderNumber}}</h5>
+  
+                <h6 class="fontPromptRegular ion-text-center">เลขที่บิล</h6>
+                <h5 class="fontPromptBold ion-text-center">{{qaDocNumber}}</h5>
+      
+  
+          </ion-col>
+  
+  
+          <ion-col size="2.4" class="myBorder2" style="border-color: black;">
+            <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+              <ion-col>
+                <ion-text>ผู้รับงาน<br></ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="fontPromptBold fontSize18 ion-text-center">
+              <ion-col>
+                <ion-text ><br> {{nameReceive}}({{nickNameReceive}}) </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+  
+    
+          <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+            <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+              <ion-col>
+                <ion-text>Team<br><br></ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="fontPromptBold fontSize18 ion-text-center">
+              <ion-col>
+                <ion-img src="{{avatar}}" class="heigth70"></ion-img>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+  
+          <ion-col size="2.6" class="myBorder2" style="border-color: black;">
+            <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+              <ion-col>
+                <ion-text >วันที่รับงาน<br></ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="fontPromptBold ion-text-center">
+              <ion-col>
+                <h6 class="colorFontGray"><br>เวลา :{{dateReceive | date: 'HH:mm' : '+0'}} น.</h6>
+                <h6 >({{thaiDate}}) {{dateReceive | date:'dd/MM/yyyy':"+0000"}}</h6>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+    
+          <ion-col size="1.5" class="myBorder2" style="border-color: black;">
+            <ion-row class="fontPromptRegular fontSize17 ion-text-center">
+              <ion-col>
+                <ion-text>โอนมาจาก<br>Factory</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="fontPromptBold fontSize18 ion-text-center">
+              <ion-col class="center">
+                
+                  <ion-img src="{{showIcon}}" class="heigth70"></ion-img>
+                
+    
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+  
+  
+      </ion-grid>
+  
+    </ion-toolbar>
+  
+    <ion-toolbar>
+  
+    <!-- <ion-row >
+      <ion-col size="3" class="padingbuttom">
+  
+        <ion-button (click)="selectAll()"><p class="fontPromptMedium">กดเลือกรายการ<br>
+      QA ผ่านทั้งหมด</p></ion-button>
+      </ion-col>
+  
+      <ion-col size="3.2" offset="5.8" class="ion-text-center fontSize24 fontPromptBold backgroundGray" >
+        <ion-text >ผลการ QA</ion-text>
+      </ion-col>
+    </ion-row> -->
+  
+    <ion-item>
+      <ion-checkbox color="primary" slot="start" (click)="selectAll()"></ion-checkbox>
+      <ion-label class="fixed30">
+        <h1  class="fontPromptRegular">
+          เลือก QA ผ่านทั้งหมด
+        </h1>
+      </ion-label>
+     
+      <ion-label class="fixed45">
+        <ion-text class="fontPromptRegular">
+         
+        </ion-text>
+      </ion-label>
+  
+  
+      <ion-label class="fixed25" class="backgroundGray">
+        <h1 class="fontPromptBold align">
+          ผลการตรวจ
+        </h1>
+      </ion-label>
+    </ion-item>
+  
+  
+  
+    <ion-row>
+      <ion-col>
+        <ion-item color="dark">
+  
+          <ion-col size="0.8" class="ion-text-left">
+            <ion-label>
+              <ion-text class="fontPromptRegular fontSize14">No.</ion-text>
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="3"  class="ion-text-center">
+            
+            <ion-text class="fontPromptRegular fontSize16">Product</ion-text>
+          </ion-col>
+  
+          <ion-col size="1.3" offset="0.4" class="ion-text-center">
+            <ion-label>
+              <ion-text class="fontPromptRegular fontSize14">รับมา</ion-text>
+              <!-- <ion-text class="fontPromptRegular fontSize20">55555</ion-text> -->
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="1.3" class="ion-text-center">
+            <ion-label>
+              <ion-text class="fontPromptRegular fontSize14" color="primary">ตรวจเสร็จ</ion-text>
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="1.3" class="ion-text-center">
+            <ion-label>
+              <ion-text class="fontPromptRegular fontSize14" color="danger">รอตรวจ</ion-text>
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="1.3" class="ion-text-center">
+            <ion-label>
+              <ion-text class="fontPromptRegular fontSize14" color="warning">งาน<br>กำลังซ่อม</ion-text>
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="1.4" class="align">
+            <ion-label>
+              <ion-text class="fontPromptRegular ion-text-center fontSize14" color="primary">เลือกจำนวน<br>QAผ่าน</ion-text>
+            </ion-label>
+          </ion-col>
+  
+          <ion-col size="1.3" class="align">
+            <ion-label>
+                <ion-text class="fontPromptRegular ion-text-center fontSize14" color="warning">เปิดบิล<br>ซ่อม</ion-text>
+            </ion-label>
+          </ion-col>
+  
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  
+       <!-- Summary -->
+       <ion-row>
+        <ion-col>
+  
+          <ion-item color="light" >
+            <!-- <ion-col size="1"></ion-col> -->
+            <ion-col size="3.8" class="ion-text-center">
+              <ion-label><div class="fontPromptBold fontSize24">ยอดรวม : </div></ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" offset="0.4" class="ion-text-center">
+              <ion-label>
+                <ion-text class="fontPromptBold fontSize20">
+                  {{ sum1 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label color="primary">
+                <ion-text class="fontPromptBold fontSize20">
+                  {{ sum2 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label color="danger" >
+                <ion-text class="fontPromptBold fontSize20">
+                  {{ sum3 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label color="warning">
+                <ion-text class="fontPromptBold fontSize20">
+                  {{ sum4 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label color="primary">
+                <ion-text class="fontPromptBold fontSize20">
+                  {{ sum5 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label color="warning">
+                <ion-text class="fontPromptBold fontSize20">
+                 {{ sum6 | number }}
+                </ion-text>
+              </ion-label>
+            </ion-col>
+  
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  <ion-content>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let i of qaStatusDetail" class="align" [ngClass]="{'myImg': i.Qty == i.FinishQty}">
+  
+            <ion-col size="0.8" class="ion-text-left">
+              <ion-label>
+                <ion-text class="fontPromptRegular fontSize20">{{ i.bill_Item }}</ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="3">
+              <img src="{{ i.NewPict}}">
+              <ion-text class="fontPromptRegular fontSize16"><br>{{i.ProductCode}}</ion-text>
+            </ion-col>
+  
+            <ion-col size="1.3" offset="0.4" class="ion-text-center">
+              <ion-label>
+                <ion-text class="fontPromptRegular fontSize20">{{ i.Qty }}</ion-text>
+                <!-- <ion-text class="fontPromptRegular fontSize20">55555</ion-text> -->
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label>
+                <ion-text class="fontPromptRegular fontSize20" color="primary">{{ i.FinishQty }}</ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label>
+                <ion-text class="fontPromptRegular fontSize20" color="danger">{{ i.Qty - i.FinishQty - (i.RepairQty - i.RepairFinish) }}</ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="ion-text-center">
+              <ion-label>
+                <ion-text class="fontPromptRegular fontSize20" color="warning">{{ i.RepairQty - i.RepairFinish }}</ion-text>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="align">
+              <ion-label>
+                <ion-badge slot="end" color="primary">
+                  <ion-button color="primary" (click)="openModalFinish(i)" 
+                  [disabled]="i.FinishQty == i.Qty">
+                     <h5 class="fontPromptRegular ion-text-center">{{ i.SelectQaFinish }}</h5>
+                  </ion-button>
+                </ion-badge>
+              </ion-label>
+            </ion-col>
+  
+            <ion-col size="1.3" class="align">
+              <ion-label>
+                <ion-badge slot="end" color="warning" >
+                  <ion-button color="warning" (click)="openModalRepair(i)" 
+                  [disabled]="i.FinishQty == i.Qty">
+                  <h5 class="fontPromptRegular ion-text-center">{{ i.SelectToRepair }}</h5>
+                  </ion-button>
+                </ion-badge>
+              </ion-label>
+            </ion-col>
+  
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  
+  </ion-content>
+  
+  <ion-footer>
+    <ion-row> 
+      
+      <ion-col size="1">
+        <br>
+      </ion-col>
+  
+       <ion-col size="3">
+         <ion-button  color="success" expand="block" (click)="onConfirm()"><h3 class="fontPromptRegular align">ยืนยันส่งงาน</h3></ion-button>
+       </ion-col>
+  
+       <ion-col size="4">
+        <br>
+      </ion-col>
+  
+       <ion-col size="3">
+        <ion-button color="danger"  expand="block"  (click)="backPage()"><h3 class="fontPromptRegular align">กลับ</h3></ion-button>
+        <!-- <ion-button color="danger" expand="full" shape="round" (click)="goBack()">ยกเลิก</ion-button> -->
+      </ion-col>
+  
+      <ion-col size="1">
+        <br>
+      </ion-col>
+  
+    </ion-row>
+  
+  </ion-footer>
+
+  <!-- routerLink="/tabs/qastatus" routerDirection="back" -->
+  
+  
+  

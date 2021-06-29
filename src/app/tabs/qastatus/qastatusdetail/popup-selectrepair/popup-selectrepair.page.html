@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class=" fontPromptRegular" >
+      <h1 class="fontsize20">กรุณากรอกข้อมูลซ่อม </h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div>
+      <br><br>
+    </div>
+
+    <div align="center">
+      <ion-img src="{{userSelected.NewPict}}" style="width: 250px;"></ion-img>
+      <h3 class=" fontPromptRegular">{{userSelected.ProductCode}}</h3>
+    </div>
+
+    <!-- <div>
+      <ion-item>
+        <h5 class=" fontPromptRegular">จำนวนทั้งหมดของงาน = {{userSelected.Qty}}</h5>
+      </ion-item>
+    </div>/
+
+    <div>
+      <ion-item>
+        <h5 class=" fontPromptRegular">จำนวนงานที่ยังค้างอยู่ = {{userSelected.Qty - (userSelected.RepairQty - userSelected.RepairFinish) - userSelected.FinishQty}}</h5>
+      </ion-item>
+    </div> -->
+
+    <div>
+      <ion-item>
+        <h5 class=" fontPromptRegular">จำนวนรวมที่ต้องการส่งซ่อม = {{sumValues}}</h5>
+      </ion-item>
+    </div>
+
+    <!-- a 1 -->
+    <ion-item *ngFor="let r of reason" color="warning">
+
+      <ion-label class="fixed10 ">
+        <h2 class="fontPromptBold">
+          แผนก : 
+        </h2>
+      </ion-label>
+
+      <ion-select class="fixed25"interface="action-sheet" [(ngModel)]="r.typeID" (ionChange)="getTypeID(r.typeID)">
+        <ion-select-option *ngFor="let i of showReason1" value="{{i.type_ID}}">
+           {{i.repairType}} 
+        </ion-select-option>
+      </ion-select>
+
+      <ion-label class="fixed15">
+        <h2 class="fontPromptBold">
+          สาเหตุ : 
+        </h2> 
+      </ion-label>
+
+      <ion-select class="fixed25" interface="action-sheet" [(ngModel)]="r.reasonNo" (ionChange)="getTypeID(r.typeID)">
+        <ion-select-option *ngFor="let i of showReason2" value="{{i.reason_No}}">
+           {{i.reasonType}} 
+        </ion-select-option>
+      </ion-select>
+
+      <ion-label > 
+        <h2 class=" fontPromptBold">จำนวน</h2>
+      </ion-label>
+      <ion-input [(ngModel)]="r.count" (click)="$event.target.select()" type="number" debounce="500" (ionChange)="sumValue()" [disabled]="r.typeID == 0"></ion-input>
+      
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col size-md="4" offset-md="4" class="align" >
+        <ion-button (click)="addItem()" size="small" color="dark"><ion-icon name="add"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    
+
+    <div align="center">
+      <br><br><br>
+      <ion-button color="success"(click)="closeModal()" [disabled]="sumValues > userSelected.Qty - (userSelected.RepairQty - userSelected.RepairFinish) - userSelected.FinishQty
+         - userSelected.SelectQaFinish - userSelected.RepairSent">
+        &nbsp;&nbsp;&nbsp;&nbsp;ตกลง&nbsp;&nbsp;&nbsp;&nbsp;
+      </ion-button>
+    </div>
+
+
+  
+</ion-content>
+
